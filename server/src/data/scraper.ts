@@ -16,12 +16,11 @@ export const scrapeLineUps = async () => {
                     pos: starter.querySelector('td').innerHTML,
                     name: starter.querySelector('.long-player-name').innerHTML
                 }));
-                return {team: teamname};
+                return {team: teamname, starterData};
             })
 
             return data
         })
-        console.log(starters); 
         await browser.close();
         return starters;
     } catch (err) {

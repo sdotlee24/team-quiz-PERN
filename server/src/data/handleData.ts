@@ -41,7 +41,7 @@ const getTeams = async () => {
 const getStarters = async (team: string) => {
     const teamInfo = await scrapeLineUps();
     const starters = [];
-    const teamData = teamInfo?.find((t) => t.teamname.includes(team));
+    const teamData = teamInfo?.find((t: any) => t.teamname.includes(team));
     console.log(teamData);
 
 }

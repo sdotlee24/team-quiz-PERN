@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import teamList from '../TeamName.json';
+import court from '../images/court.webp'
 function Game() {
     const [stats, setStats] = useState([]);
     const [mode, setMode] = useState("");
@@ -8,6 +9,8 @@ function Game() {
     const [guess, setGuess] = useState("");
     const [hint, setHint] = useState("Hint");
     const [conf, setconf] = useState("");
+    const [skipBtn, setSkip] = useState(false);
+    const [wrong, setWrong] = useState(false);
     const fetchData = async() => {
         try {
             const response = await axios.get("http://localhost:3001/quiz");
@@ -15,11 +18,18 @@ function Game() {
             setMode(response.data.choice);
             setTeam(response.data.name);
             setconf(response.data.conf + 'ern Conference');
+            setHint("Hint");
         } catch (err) {
             console.log(err);
         }  
     }
-
+    const skip = () => {
+        setSkip(true);
+        setTimeout(() => {
+            setSkip(false);
+            fetchData();
+        }, 900);
+    }
     useEffect(() => {
         fetchData();
 
@@ -30,26 +40,31 @@ function Game() {
     }
 
     const onSubmit = (g) => {
-        //Does not work, there are some edgecases: if i pass in empty space, -> True
-        
         console.log(guess);
         const success = team.toLowerCase().includes(g.toLowerCase());
+
         if (success) {
-            console.log("hurray");
+            const inp = document.querySelector('input');
+            inp.classList.add('green-border');
+            setTimeout(() => {
+                inp.classList.remove('green-border');
+            }, 1300); 
             fetchData(); 
 
         } else {
-            
+            setWrong(true);
+            setTimeout(() => {
+                setWrong(false);
+            }, 1400);         
         }
         setGuess("");
     }
 
     return (
-        <div>
+        <div className='main'>
             <div className='search-container'>
                 <div className='search-inner'>
-                    <input placeholder='Guess Team' onChange={onChange} name='guess' value={guess}></input>
-                    {/* <button type='submit' onClick={onSubmit}></button> */}
+                    <input placeholder='Guess Team' onChange={onChange} name='guess' value={guess} className={`input ${wrong? 'red-border': ''}`}></input>
                 </div>
                 <div className='dropdown'>
                     {teamList.filter(t => {
@@ -64,10 +79,20 @@ function Game() {
                     </div>))}
                 </div>
             </div>
-            <h1>{`${stats[0]} ${stats[1]} ${stats[2]}`}</h1>
-            <h1>{mode}</h1>
-            <button onClick={fetchData}>Skip</button>
-            <div className='hint' onMouseEnter={() => {setHint(conf)}} onMouseLeave={() => {setHint("Hint")}}>{hint}</div>
+            <div className='wrapper'>
+            <div className='contents'>
+                <img src={court} className='court'></img>
+                <h1 className='stats pg'>{`PG: ${stats[0]}`}</h1>
+                <h1 className='stats sg'>{`SG: ${stats[1]}`}</h1>
+                <h1 className='stats sf'>{`SF: ${stats[2]}`}</h1>
+                <h1 className='stats pf'>{`PF: ${stats[3]}`}</h1>
+                <h1 className='stats c'>{`C: ${stats[4]}`}</h1>
+                <div className='hint' onClick={() => {setHint(conf)}}>{hint}</div>
+                <h1>{`Category: ${mode}`}</h1>
+                {skipBtn && <h2>{team}</h2>}
+                <button onClick={skip} className='skip'>Skip</button>
+            </div>
+            </div>
             </div>
     )
 

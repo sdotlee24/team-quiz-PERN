@@ -47,12 +47,12 @@ const getTeams = async () => {
         console.log(error);
     }
 }
-//TODO: For input section on the frontend, to make it more robust (ex: GSW == warriors == golden state) utilize GPT's api
+
 
 const getStarters = async (team: string) => {
     const teamInfo = await scrapeLineUps();
     const starters = [];
-    const teamData = teamInfo?.find((t) => t.teamname.includes(team))?.starterData;
+    const teamData = teamInfo?.find((t) => t.team.includes(team))?.starterData;
     let success = true;
     if (teamData) {
         for (let i = 0; i < teamData?.length; i++) {
@@ -85,7 +85,7 @@ const getStarters = async (team: string) => {
         return success? starters : [] 
     }
 }
-// getTeams();
+
 
 
 // const t = async () => {
