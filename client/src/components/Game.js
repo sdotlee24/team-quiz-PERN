@@ -13,7 +13,7 @@ function Game() {
     const [wrong, setWrong] = useState(false);
     const fetchData = async() => {
         try {
-            const response = await axios.get("http://localhost:3001/quiz");
+            const response = await axios.get("/quiz");
             setStats(response.data.stats);
             setMode(response.data.choice);
             setTeam(response.data.name);
