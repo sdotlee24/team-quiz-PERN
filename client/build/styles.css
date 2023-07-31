@@ -1,0 +1,178 @@
+body {
+    margin: 0px;
+}
+
+.hint {
+    background-color: red;
+    padding: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: white;
+    font-weight: bold;
+    border: 4px solid #705d56;
+}
+
+
+
+.hint:active {
+    transform: scale(0.95);
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+.input {
+    padding: 10px 8px;
+    outline: none;
+    border: 1px solid #005864;
+    width: 300px;
+    font-size: 24px;
+    
+
+}
+.input:hover {
+    border: 1px solid rgb(23,137, 175);
+}
+
+.red-border {
+    border: 3px solid rgb(224, 28, 28);
+    transition: border-color 0.2s;
+    animation: shake 0.4s ease-in-out;
+}
+
+.green-border {
+    border: 5px solid rgb(82, 207, 82);
+    transition: border-color 0.2s
+}
+
+html {
+    background-color: #f0f7f4;
+
+}
+
+.navbar {
+    background-color: #705d56;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.nav {
+    color: #F0f7f4;
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+    margin: 20px 30px;
+}
+
+.main {
+    
+    justify-content: center;
+    align-items: normal;
+    text-align: center;
+    min-height: 100vh;
+}
+
+
+.dropdown {
+    background-color: #f5f4f4;
+    position: absolute;
+    
+    width: 316px;
+    left: 50%;
+    transform: translate(-50%);
+    
+    border-width: 0px 1px 1px 1px;
+    border-color: rgb(23,137, 175);
+    border-style: solid;
+    z-index: 3;
+}
+
+.d-row {
+    padding: 5px 0px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    position: relative;
+    z-index: 2;
+    background-color: white;
+}
+
+.d-row:hover {
+    background-color: rgb(132, 218, 202);
+}
+
+.court {
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 600px;
+    display: absolute;
+}
+
+.stats {
+    z-index: 1;
+    position: absolute;
+    background-color: white;
+    font-size: 30px;
+    padding: 2px;
+    border-radius: 2px;
+    border: 2px solid rgb(78, 14, 14);
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+.pg {
+    left: 39%;
+    top: -2%;
+
+}
+
+.sg {
+    left: 68%;
+    top: 9%;
+}
+
+.sf {
+    left: 11%;
+    top: 9%;
+}
+
+.c {
+    top: 53%;
+    left: 61%;
+}
+
+.pf {
+    top: 53%;
+    left: 21%;
+}
+
+.contents {
+    position: relative;
+    width: 600px;
+    
+}
+
+.wrapper {
+    width: 600px;
+    margin: 40px auto; 
+}
+
+.skip {
+    padding: 19px 20px 11px 20px;
+    background-color: rgb(201, 25, 25);
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    color: whitesmoke;
+}
+
+.about {
+    position: relative;
+    text-align: center;
+
+}
