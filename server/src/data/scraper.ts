@@ -27,5 +27,3 @@ export const scrapeLineUps = async () => {
         console.log(err);
     }
 }
-
-scrapeLineUps();
