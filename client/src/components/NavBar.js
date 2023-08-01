@@ -1,10 +1,10 @@
 import React from 'react'
 // import Auth from './Auth.js'
 import {Link} from 'react-router-dom'
-import { useCookies } from 'react-cookie';
+
 
 export const Navbar = () => {
-    // const [cookies, setCookies] = useCookies(["access_token"]);
+   
 
 
     return (<div className='navbar'>

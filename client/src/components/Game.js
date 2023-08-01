@@ -81,7 +81,7 @@ function Game() {
             </div>
             <div className='wrapper'>
             <div className='contents'>
-                <img src={court} className='court'></img>
+                <img src={court} className='court' alt='An image of a basketball court'></img>
                 <h1 className='stats pg'>{`PG: ${stats[0]}`}</h1>
                 <h1 className='stats sg'>{`SG: ${stats[1]}`}</h1>
                 <h1 className='stats sf'>{`SF: ${stats[2]}`}</h1>
