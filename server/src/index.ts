@@ -3,7 +3,7 @@ import { quizRouter  } from './router/router';
 import cors from 'cors';
 import path from 'path';
 
-const app = express();
+export const app = express();
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(cors());
 app.use(quizRouter);
